@@ -69,7 +69,7 @@
 }
 
 /* Each module */
-#battery,
+#custom-weather,
 #clock,
 #cpu,
 #language,
@@ -186,7 +186,12 @@
 	color: @black;
 }
 
-#battery {
+/* #battery {
+	background: @battery;
+	color: @white;
+} */
+
+#custom-weather {
 	background: @battery;
 	color: @white;
 }

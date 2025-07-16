@@ -1,14 +1,12 @@
 {
 	"layer": "top",
 	"position": "top",
-
 	"modules-left": [
 		"hyprland/mode",
 		"hyprland/workspaces",
 		"custom/arrow10",
 		"hyprland/window"
 	],
-
 	"modules-right": [
 		"custom/arrow9",
 		"pulseaudio",
@@ -21,7 +19,8 @@
 		"custom/arrow5",
 		"temperature",
 		"custom/arrow4",
-		"battery",
+		// "battery",
+		"custom/weather",
 		"custom/arrow3",
 		"hyprland/language",
 		"custom/arrow2",
@@ -30,44 +29,48 @@
 		"custom/arrow1",
 		"clock#time"
 	],
-
 	// Modules
-
-	"battery": {
-		"interval": 10,
-		"states": {
-			"warning": 30,
-			"critical": 15
-		},
-		"format-time": "{H}:{M:02}",
-		"format": "{icon} {capacity}% ({time})",
-		"format-charging": " {capacity}% ({time})",
-		"format-charging-full": " {capacity}%",
-		"format-full": "{icon} {capacity}%",
-		"format-alt": "{icon} {power}W",
-		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			""
-		],
-		"tooltip": false
+	// "battery": {
+	// 	"interval": 10,
+	// 	"states": {
+	// 		"warning": 30,
+	// 		"critical": 15
+	// 	},
+	// 	"format-time": "{H}:{M:02}",
+	// 	"format": "{icon} {capacity}% ({time})",
+	// 	"format-charging": " {capacity}% ({time})",
+	// 	"format-charging-full": " {capacity}%",
+	// 	"format-full": "{icon} {capacity}%",
+	// 	"format-alt": "{icon} {power}W",
+	// 	"format-icons": [
+	// 		"",
+	// 		"",
+	// 		"",
+	// 		"",
+	// 		""
+	// 	],
+	// 	"tooltip": false
+	// },
+	"custom/weather": {
+		"format": "{}°F",
+		"tooltip": true,
+		"interval": 3600,
+		"exec": "wttrbar --location=\"San Ramon, CA\" --fahrenheit --mph --custom-indicator \"{areaName} {ICON}{temp_F}\"",
+		"on-click": "xdg-open \"https://wttr.in/San Ramon\"",
+		"return-type": "json"
 	},
 
 	"clock#time": {
 		"interval": 10,
-		"format": "{:%H:%M}",
+		"format": "{:%I:%M%p}",
 		"tooltip": false
 	},
-
 	"clock#date": {
 		"interval": 20,
 		"format": "{:%e %b %Y}",
-		"tooltip": false
-		//"tooltip-format": "{:%e %B %Y}"
+		"tooltip": true,
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
 	},
-
 	"cpu": {
 		"interval": 5,
 		"tooltip": false,
@@ -78,14 +81,12 @@
 			"critical": 90
 		}
 	},
-
 	"hyprland/language": {
 		"format": " {}",
 		"min-length": 5,
 		"on-click": "hyprlandmsg 'input * xkb_switch_layout next'",
 		"tooltip": false
 	},
-
 	"memory": {
 		"interval": 5,
 		"format": " {used:0.1f}G/{total:0.1f}G",
@@ -95,7 +96,6 @@
 		},
 		"tooltip": false
 	},
-
 	"network": {
 		"interval": 5,
 		"format-wifi": " {essid} ({signalStrength}%)",
@@ -104,25 +104,21 @@
 		"format-alt": " {ipaddr}/{cidr}",
 		"tooltip": false
 	},
-
 	"hyprland/mode": {
 		"format": "{}",
 		"tooltip": false
 	},
-
 	"hyprland/window": {
 		"format": "{}",
 		"max-length": 30,
 		"tooltip": false
 	},
-
 	"hyprland/workspaces": {
 		"disable-scroll-wraparound": true,
 		"smooth-scrolling-threshold": 4,
 		"enable-bar-scroll": true,
 		"format": "{name}"
 	},
-
 	"pulseaudio": {
 		"format": "{icon} {volume}%",
 		"format-bluetooth": "{icon} {volume}%",
@@ -134,13 +130,15 @@
 			"phone": "",
 			"portable": "",
 			"car": "",
-			"default": ["", ""]
+			"default": [
+				"",
+				""
+			]
 		},
 		"scroll-step": 1,
 		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
 		"tooltip": false
 	},
-
 	"temperature": {
 		"critical-threshold": 90,
 		"interval": 5,
@@ -154,61 +152,49 @@
 		],
 		"tooltip": false
 	},
-
 	"tray": {
 		"icon-size": 18
 		//"spacing": 10
 	},
-
 	"custom/arrow1": {
 		"format": "",
 		"tooltip": false
 	},
-
 	"custom/arrow2": {
 		"format": "",
 		"tooltip": false
 	},
-
 	"custom/arrow3": {
 		"format": "",
 		"tooltip": false
 	},
-
 	"custom/arrow4": {
 		"format": "",
 		"tooltip": false
 	},
-
 	"custom/arrow5": {
 		"format": "",
 		"tooltip": false
 	},
-
 	"custom/arrow6": {
 		"format": "",
 		"tooltip": false
 	},
-
 	"custom/arrow7": {
 		"format": "",
 		"tooltip": false
 	},
-
 	"custom/arrow8": {
 		"format": "",
 		"tooltip": false
 	},
-
 	"custom/arrow9": {
 		"format": "",
 		"tooltip": false
 	},
-
 	"custom/arrow10": {
 		"format": "",
 		"tooltip": false
 	}
 }
-
 // vi:ft=jsonc
